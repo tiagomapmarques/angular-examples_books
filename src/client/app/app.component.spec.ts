@@ -15,8 +15,7 @@ import {
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { ToolbarComponent } from './shared/toolbar/toolbar.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
+import { ToolbarComponent, NavbarComponent } from './shared/ui/index';
 
 export function main() {
 
@@ -59,6 +58,3 @@ export function main() {
 
 class TestComponent {
 }
-
-
-

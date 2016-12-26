@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NameListService } from '../shared/index';
+import { BooksService } from '../shared/services/index';
+import { Book } from '../shared/models/index';
 
 /**
  * This class represents the lazy loaded HomeComponent.
@@ -23,7 +24,7 @@ export class HomeComponent implements OnInit {
    *
    * @param {NameListService} nameListService - The injected NameListService.
    */
-  constructor(public nameListService: NameListService) {}
+  constructor(public booksService: BooksService) {}
 
   /**
    * Get the names OnInit
@@ -36,11 +37,14 @@ export class HomeComponent implements OnInit {
    * Handle the nameListService observable
    */
   getNames() {
-    this.nameListService.get()
-      .subscribe(
-        names => this.names = names,
-        error =>  this.errorMessage = <any>error
-      );
+    this.booksService.get().subscribe((books: Book[]) => {
+      console.log(books);
+    });
+    // this.nameListService.get()
+    //   .subscribe(
+    //     names => this.names = names,
+    //     error =>  this.errorMessage = <any>error
+    //   );
   }
 
   /**
