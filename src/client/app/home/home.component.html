@@ -1,10 +1,26 @@
-<p>Howdy! Here's a list of awesome computer scientists. Do you know any others? Add to the list yourself.</p>
+<div class="search-section">
+  <label for="titleFilter">Search for:</label>
+  <input [(ngModel)]="titleFilter" class="text-input" name="titleFilter" placeholder="Author or Title" (keyup)="titleChanged()" />
+</div>
 
-<form (submit)="addName()">
-  <input [(ngModel)]="newName" name="newName" placeholder="Awesome Computer Scientist">
-  <button type="submit">Add</button>
-</form>
+<div class="search-section">
+  <label for="genresFilter">From these genres:</label>
+  <sd-checkbox-list name="genresFilter" [list]="genres" (onchange)="genreChanged($event)"></sd-checkbox-list>
+</div>
 
-<ul>
-  <li *ngFor="let name of names">{{name}}</li>
-</ul>
+<div class="search-section">
+  <label for="categoryFilter">Of this category:</label>
+  <sd-radio-list name="categoryFilter" [list]="categories" [altOption]="'All'" (onchange)="categoryChanged($event)"></sd-radio-list>
+</div>
+
+<div class="results">
+  <label>Search results:</label>
+  <div class="list" *ngIf="books && books.length">
+    <template ngFor let-book [ngForOf]="books" let-i="index">
+        <sd-book-summary *ngIf="isWithinPagination(i)" [book]="book"></sd-book-summary>
+    </template>
+  </div>
+  <div *ngIf="books && !books.length">Oops! No books match such criteria.</div>
+  <button [disabled]="!isPreviousPageValid()" [class.disabled]="!isPreviousPageValid()" (click)="previousPage()">&lt;&lt;</button>
+  <button [disabled]="!isNextPageValid()" [class.disabled]="!isNextPageValid()" (click)="nextPage()">&gt;&gt;</button>
+</div>
