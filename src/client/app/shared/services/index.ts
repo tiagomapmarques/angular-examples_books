@@ -1,1 +1,1 @@
-export { BooksService } from './books.service';
+export * from './books.service';
