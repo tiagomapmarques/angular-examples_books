@@ -17,7 +17,7 @@
   <label>Search results:</label>
   <div class="list" *ngIf="books && books.length">
     <template ngFor let-book [ngForOf]="books" let-i="index">
-        <sd-book-summary *ngIf="isWithinPagination(i)" [book]="book"></sd-book-summary>
+        <sd-book-summary *ngIf="isWithinPagination(i)" [book]="book" (click)="showBook(book)"></sd-book-summary>
     </template>
   </div>
   <div *ngIf="books && !books.length">Oops! No books match such criteria.</div>

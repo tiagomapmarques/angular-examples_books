@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router }   from '@angular/router';
 import { BookListState, GenreState, CategoryState } from '../shared/states/index';
 import { Book } from '../shared/models/index';
 
@@ -31,6 +32,7 @@ export class HomeComponent implements OnInit {
    * @param {BooksService} booksService - The injected BooksService.
    */
   constructor(
+    private router: Router,
     private bookListState: BookListState,
     private genreState: GenreState,
     private categoryState: CategoryState
@@ -82,6 +84,10 @@ export class HomeComponent implements OnInit {
 
   public nextPage(): void {
     this.pageNumber++;
+  }
+
+  public showBook(book: Book) {
+    this.router.navigate(['book', book.id]);
   }
 
   private updateBookList(): void {
