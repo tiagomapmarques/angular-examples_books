@@ -25,6 +25,7 @@ export class BookComponent implements OnInit {
    * @param {Router} router - The injected router from Angular2.
    * @param {ActivatedRoute} route - The injected navigation module from Angular2.
    * @param {BookListState} bookListState - The injected BookListState.
+   * @constructor
    */
   constructor(private router: Router, private route: ActivatedRoute, private bookListState: BookListState) {}
 

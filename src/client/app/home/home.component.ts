@@ -60,6 +60,7 @@ export class HomeComponent implements OnInit {
    * @param {BookListState} bookListState - The injected BookListState.
    * @param {GenreState} genreState - The injected GenreState.
    * @param {CategoryState} categoryState - The injected CategoryState.
+   * @constructor
    */
   constructor(
     private router: Router,
