@@ -14,5 +14,5 @@ export interface Book {
   introduction: IntroductionContent[];
   likes: number;
   name: string;
-  published: string;// Date;
+  published: Date;
 }

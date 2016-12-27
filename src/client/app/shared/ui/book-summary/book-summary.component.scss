@@ -1,0 +1,18 @@
+:host {
+  width: calc(24.6%);
+  display: inline-block;
+  border: 1px black solid;
+  margin-bottom: 5px;
+}
+
+.cover {
+  height: 200px;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+label {
+  display: block;
+  text-align: center;
+}

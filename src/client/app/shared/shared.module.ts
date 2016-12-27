@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { BooksService } from './services/index';
-import { ToolbarComponent, NavbarComponent } from './ui/index';
+import { ToolbarComponent, RadioListComponent, CheckboxListComponent, BookSummaryComponent } from './ui/index';
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -12,8 +12,8 @@ import { ToolbarComponent, NavbarComponent } from './ui/index';
 
 @NgModule({
   imports: [CommonModule, RouterModule],
-  declarations: [ToolbarComponent, NavbarComponent],
-  exports: [ToolbarComponent, NavbarComponent,
+  declarations: [ToolbarComponent, RadioListComponent, CheckboxListComponent, BookSummaryComponent],
+  exports: [ToolbarComponent, RadioListComponent, CheckboxListComponent, BookSummaryComponent,
     CommonModule, FormsModule, RouterModule]
 })
 export class SharedModule {
