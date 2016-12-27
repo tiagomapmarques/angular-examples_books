@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Book } from '../../models/index';
 
 @Component({
@@ -10,4 +10,13 @@ import { Book } from '../../models/index';
 
 export class BookSummaryComponent {
   @Input() book: Book;
+  @Output() click: EventEmitter<null>;
+
+  constructor() {
+    this.click = new EventEmitter<null>();
+  }
+
+  public clicked(): void {
+    this.click.emit(null);
+  }
 }
