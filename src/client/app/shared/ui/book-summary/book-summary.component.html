@@ -1,5 +1,7 @@
-<div class="cover" [style.backgroundImage]="'url('+book.cover+')'"></div>
-<label>{{book.name}}</label>
-<label>by {{book.author.name}}</label>
-<label>{{book.likes}} people love it!</label>
-<label>Published {{book.published | date:medium}}</label>
+<div (click)="clicked()">
+  <div class="cover" [style.backgroundImage]="'url('+book.cover+')'"></div>
+  <label>{{book.name}}</label>
+  <label>by {{book.author.name}}</label>
+  <label>{{book.likes}} people love it!</label>
+  <label>Published {{book.published | date:medium}}</label>
+</div>
