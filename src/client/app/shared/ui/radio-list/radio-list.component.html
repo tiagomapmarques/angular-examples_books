@@ -1,0 +1,8 @@
+<div class="single-radio" *ngIf="altOption">
+  <label>{{ altOption }}</label>
+  <input type="radio" name="alt" [value]="altOption" (click)="changed(null)" [checked]="isDefault(null)" />
+</div>
+<div class="single-radio" *ngFor="let item of list; let i = index">
+  <label>{{ item }}</label>
+  <input type="radio" [name]="i" [value]="item" (click)="changed(i)" [checked]="isDefault(i)" />
+</div>

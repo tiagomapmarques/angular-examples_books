@@ -1,0 +1,4 @@
+<div class="single-checkbox" *ngFor="let item of list">
+  <label>{{ item }}</label>
+  <input type="checkbox" [value]="item" (click)="changed()" />
+</div>
