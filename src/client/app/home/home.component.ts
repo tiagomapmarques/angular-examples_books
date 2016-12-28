@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Book, BookListState, GenreState, CategoryState } from '../shared/index';
+import { Book, BookListState, GenreState, CategoryState, FilterService } from '../shared/index';
 
 /**
  * This class represents the lazy loaded HomeComponent.
@@ -66,7 +66,8 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private bookListState: BookListState,
     private genreState: GenreState,
-    private categoryState: CategoryState
+    private categoryState: CategoryState,
+    private filterService: FilterService
   ) {}
 
   /**
@@ -164,50 +165,17 @@ export class HomeComponent implements OnInit {
   }
 
   /**
-   * Function responsible for filtering the entire book list considering the
-   * three filter variables: titleFilter, selectedGenres and selectedCategory.
-   * This function updates the books variable of the component.
+   * Function responsible for filtering/updating the entire book list considering
+   * the three filter variables: titleFilter, selectedGenres and selectedCategory.
    */
   private updateBookList(): void {
     this.bookListState.get().subscribe((books: Book[]) => {
-      this.books = books.filter(book => {
-        let matchesTitleOrAuthor = this.fineSearch(book.name, this.titleFilter) || this.fineSearch(book.author.name, this.titleFilter);
-        let matchesGenre = false;
-        if(this.selectedGenres.length === 0) {
-          matchesGenre = true;
-        } else {
-          this.selectedGenres.forEach((genreIndex: number) => {
-            matchesGenre = matchesGenre || this.fineSearch(book.genre.name, this.genres[genreIndex]);
-          });
-        }
-        let matchesCategory =
-          (this.selectedCategory === null) ||
-          this.fineSearch(book.genre.category, this.categories[this.selectedCategory], true);
-        return matchesTitleOrAuthor && matchesGenre && matchesCategory;
-      });
+      let genres: string[] = [];
+      this.selectedGenres.forEach(genreIndex => genres.push(this.genres[genreIndex]));
+
+      let category = this.selectedCategory !== null ? this.categories[this.selectedCategory] : '';
+
+      this.books = this.filterService.byAll(books, this.titleFilter, genres, category);
     });
-  }
-
-  /**
-   * Function to compare two strings.
-   *
-   * @param {string} value - First string to be compared.
-   * @param {string} query - Second string to be compared.
-   * @param {boolean} matchStart - Whether or not to only match the start of the string
-   * @return {boolean}
-   */
-  private fineSearch(value: string, query: string, matchStart: boolean = false): boolean {
-    let index = this.trimAndLower(value).indexOf(this.trimAndLower(query));
-    return matchStart ? index === 0 : index !== -1;
-  }
-
-  /**
-   * Function trim a string down to lower-case letters only.
-   *
-   * @param {string} value - String to be trimmed.
-   * @return {string}
-   */
-  private trimAndLower(value: string): string {
-    return value.replace(/[^a-zA-Z][^a-zA-Z]*/, '').toLowerCase();
   }
 }
