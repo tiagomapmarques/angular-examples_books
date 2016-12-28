@@ -8,16 +8,14 @@ describe('App', () => {
     expect(browser.getTitle()).toEqual('Welcome to angular2-seed!');
   });
 
-  it('should have <nav>', () => {
-    expect(element(by.css('sd-app sd-navbar nav')).isPresent()).toEqual(true);
-  });
+  describe('toolbar', () => {
 
-  it('should have correct nav text for Home', () => {
-    expect(element(by.css('sd-app sd-navbar nav a:first-child')).getText()).toEqual('HOME');
-  });
+    it('should exist', () => {
+      expect(element(by.css('sd-app sd-toolbar')).isPresent()).toEqual(true);
+    });
 
-  it('should have correct nav text for About', () => {
-    expect(element(by.css('sd-app sd-navbar nav a:nth-child(2)')).getText()).toEqual('ABOUT');
+    it('should have a title', () => {
+      expect(element(by.css('sd-app sd-toolbar h1')).getText()).toEqual('Angular2 Examples: Book List');
+    });
   });
-
 });
