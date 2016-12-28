@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router }   from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { BookListState, Book } from '../shared/index';
+import { BookListState, Book, FilterService } from '../shared/index';
 
 /**
  * This class represents the lazy loaded BookComponent.
@@ -15,9 +15,13 @@ import { BookListState, Book } from '../shared/index';
 
 export class BookComponent implements OnInit {
   /**
-   * Book to be displayed in this component
+   * Book to be displayed in this component.
    */
   private book: Book;
+  /**
+   * List of recommended books.
+   */
+  private recommended: Book[];
 
   /**
    * Creates an instance of the BookComponent.
@@ -25,9 +29,15 @@ export class BookComponent implements OnInit {
    * @param {Router} router - The injected router from Angular2.
    * @param {ActivatedRoute} route - The injected navigation module from Angular2.
    * @param {BookListState} bookListState - The injected BookListState.
+   * @param {FilterService} filterService - The injected FilterService.
    * @constructor
    */
-  constructor(private router: Router, private route: ActivatedRoute, private bookListState: BookListState) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private bookListState: BookListState,
+    private filterService: FilterService
+  ) {}
 
   /**
    * On component initialisation, it fetches the id on the URL to find and
@@ -58,6 +68,9 @@ export class BookComponent implements OnInit {
         this.goToIndex();
       } else {
         this.book = filter[0];
+        this.recommended = this.filterService
+          .byAll(books, null, [this.book.genre.name], this.book.genre.category)
+          .filter((book, index) => index < 3);
       }
     });
   }
