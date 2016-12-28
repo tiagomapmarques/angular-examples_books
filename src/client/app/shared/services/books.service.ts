@@ -21,7 +21,7 @@ export class BooksService {
    *
    * @return {Book[]} The Observable for the HTTP request.
    */
-  get(): Observable<Book[]> {
+  public get(): Observable<Book[]> {
     return this.http.get('/assets/books.json')
       .map((res: Response) => res.json());
   }
