@@ -31,7 +31,7 @@ export function main() {
       introduction: [{ content: 'ic8' }, { content: 'ic9' }],
       likes: 10,
       name: 'n11',
-      published: '2003-09-18T01:59:14.918Z'
+      published: new Date('2003-09-18T01:59:14.918Z')
     };
 
     beforeEach(() => {

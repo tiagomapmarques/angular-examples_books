@@ -85,7 +85,7 @@ export class FilterService {
    */
   private byOne(books: Book[], properties: string[], filters: string[], matchStart: boolean = false): Book[] {
     return books.filter(book => {
-      let value: Book|string = book;
+      let value: any = book;
       properties.forEach(property => value = value[property]);
       if(typeof value === 'string') {
         for(var i = 0; i < filters.length; ++i) {

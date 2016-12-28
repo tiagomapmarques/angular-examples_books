@@ -20,7 +20,7 @@
         <sd-book-summary *ngIf="isWithinPagination(i)" [book]="book" (click)="showBook(book)"></sd-book-summary>
     </template>
   </div>
-  <div *ngIf="books && !books.length">Oops! No books match such criteria.</div>
+  <div class="error" *ngIf="books && !books.length">Oops! No books match such criteria.</div>
   <button [disabled]="!isPreviousPageValid()" [class.disabled]="!isPreviousPageValid()" (click)="previousPage()">&lt;&lt;</button>
   <button [disabled]="!isNextPageValid()" [class.disabled]="!isNextPageValid()" (click)="nextPage()">&gt;&gt;</button>
 </div>

@@ -23,6 +23,10 @@ export class BooksService {
    */
   public get(): Observable<Book[]> {
     return this.http.get('/assets/books.json')
-      .map((res: Response) => res.json());
+      .map((res: Response) => {
+        let books = res.json();
+        books.forEach((book: any) => book.published = new Date(book.published));
+        return books;
+      });
   }
 }

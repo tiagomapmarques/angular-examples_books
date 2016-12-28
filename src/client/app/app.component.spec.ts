@@ -13,9 +13,9 @@ import {
   RouterTestingModule
 } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { BookComponent } from './book/book.component';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { ToolbarComponent, NavbarComponent } from './shared/ui/index';
+import { ToolbarComponent, RadioListComponent, CheckboxListComponent, BookSummaryComponent } from './shared/ui/index';
 
 export function main() {
 
@@ -23,14 +23,13 @@ export function main() {
 
     let config: Route[] = [
       { path: '', component: HomeComponent },
-      { path: 'about', component: AboutComponent }
+      { path: 'book/:id', component: BookComponent }
     ];
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [FormsModule, RouterTestingModule.withRoutes(config)],
-        declarations: [TestComponent, ToolbarComponent,
-          NavbarComponent, AppComponent,
-          HomeComponent, AboutComponent],
+        declarations: [TestComponent, ToolbarComponent, RadioListComponent, CheckboxListComponent, BookSummaryComponent,
+          AppComponent, HomeComponent, BookComponent],
         providers: [
           { provide: APP_BASE_HREF, useValue: '/' }
         ]
