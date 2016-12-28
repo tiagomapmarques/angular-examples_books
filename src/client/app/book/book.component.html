@@ -15,5 +15,9 @@
     </ul>
     <h2>Contents</h2>
     <p *ngFor="let paragraph of book.introduction">{{ paragraph.content }}</p>
+    <h2>Recommended reading</h2>
+    <ul>
+      <li *ngFor="let rec of recommended"><a [routerLink]="['/book', rec.id]">{{ rec.name }}</a></li>
+    </ul>
   </div>
 </div>
