@@ -2,7 +2,7 @@
 
 This is an example SPA using Angular2 and Typescript.
 
-This app is based on the [Angular2-Seed](https://github.com/mgechev/angular-seed) project. Therefore All credit of the following features of my application are theirs:
+This app is based on the [Angular2-Seed](https://github.com/mgechev/angular-seed) project. Therefore all credit of the following features of my application are theirs:
 - Ready to go, statically typed build system using Gulp for working with TypeScript.
 - Production and development builds.
 - Sample unit tests with Jasmine and Karma including code coverage via Istanbul.
@@ -36,6 +36,7 @@ After you've run the npm install command you can test this app in two ways.
 And in another bash (after the app started):
 
 - npm run e2e
+- do **NOT** touch the browser that pops up... and dont't Alt-Tab either...
 
 # Relevant structure changes
 
@@ -62,10 +63,10 @@ And in another bash (after the app started):
 │       │   │   └── index.ts
 │       │   ├── shared
 │       │   │   ├── ...
-│       │   │   ├── models                     <- interfaces for our data objects
-│       │   │   ├── services                   <- stateless services for fetching and processing data
-│       │   │   ├── states                     <- stateful classes to make objects available throughout the app
-│       │   │   ├── ui                         <- user interface components
+│       │   │   ├── models            <- interfaces for our data objects
+│       │   │   ├── services          <- stateless services for fetching and processing data
+│       │   │   ├── states            <- stateful classes to make objects available throughout the app
+│       │   │   ├── ui                <- user interface components
 │       │   │   ├── shared.module.ts
 │       │   │   └── index.ts
 │       │   └── ...
